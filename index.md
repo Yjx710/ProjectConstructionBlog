@@ -1,6 +1,6 @@
 ---
 layout: home
-title: 前端新手Vue3+Vite+Ts+Pinia+Sass项目指北系列文章
+title: 金金金的宝藏
 ---
 
 <Home />

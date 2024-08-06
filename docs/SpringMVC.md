@@ -1064,13 +1064,13 @@ public class RestControllerTest {
 
    通过 URL 地址就可以知道资源之间的关系。它能够把一句话中的很多单词用斜杠连起来，反过来说就是可以在 URL 地址中用一句话来充分表达语义。
 
-   > [http://localhost:8080/shop](http://localhost:8080/shop)
+   > `http://localhost:8080/shop`
    >
-   > [http://localhost:8080/shop/product](http://localhost:8080/shop/product)
+   > `http://localhost:8080/shop/product`
    >
-   > [http://localhost:8080/shop/product/cellPhone](http://localhost:8080/shop/product/cellPhone)
+   > `http://localhost:8080/shop/product/cellPhone`
    >
-   > [http://localhost:8080/shop/product/cellPhone/iPhone](http://localhost:8080/shop/product/cellPhone/iPhone)
+   > `http://localhost:8080/shop/product/cellPhone/iPhone`
    >
 
 ### 4.2 实战

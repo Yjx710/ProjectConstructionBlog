@@ -13,7 +13,6 @@
 >   * 内部组件化程度高，可插拔式组件即插即用，想要什么功能配置相应组件即可
 
 ### 1.2 主要作用
-
 ![image-20240320180013965](/images/springMvc/image-20240320180013965.png)
 
 > 其中的`SpringMVC`负责**表述层**（**控制层**）实现简化
@@ -221,7 +220,6 @@ public class UserController {
 ```
 
 #### 2.1.4 请求方式限制
-
 > **HTTP** 协议定义了**八种请求方式**，`SpringMVC` 中封装到了`RequestMethod`这个**枚举类**中
 >
 > ```java
@@ -409,7 +407,6 @@ public String getUser(@PathVariable Long id, @PathVariable("name") String userna
 ```
 
 #### 2.2.4 `json`参数接收
-
 > 前端传递 `JSON` 数据时，使用 `@RequestBody` 注解来将 `JSON` 数据**转换**为 `Java` 对象。`@RequestBody` 注解表示当前方法参数的值应该从请求体中获取
 
 ```java
@@ -861,7 +858,6 @@ public String redirectDemo() {
 ```
 
 ### 3.3 返回`JSON`数据
-
 #### 前置准备
 
 > 导入`jackson`依赖，用于解析`json`，场景：返回一个实体类对象,会使用`jackson`的序列化工具,转成`json`返回给前端! 否则报415-不支持的媒体类型
@@ -905,7 +901,6 @@ public class JSONController {
 ![image-20240320170009835](/images/springMvc/image-20240320170009835.png)
 
 **`@ResponseBody`作用于类上**
-
 > 作用于类上，表示里面每个方法都会有`@ResponseBody`注解
 
 ```java
@@ -962,8 +957,7 @@ public class RestControllerTest {
 >- 现在 `/images/springMvc/shopping_cart.png` 请求没有对应的 `@RequestMapping` 所以返回 **404**
 
 > **解决**
->
-> 在 `SpringMVC`配置类中重写`configureDefaultServletHandling`方法开启默认`servlet`处理
+> > 在 `SpringMVC`配置类中重写`configureDefaultServletHandling`方法开启默认`servlet`处理
 >
 > ```java
 > @Configuration
@@ -993,13 +987,11 @@ public class RestControllerTest {
 > ```
 
 ![image-20240320175120783](/images/springMvc/image-20240320175120783.png)
-
-* 配置完后新的问题：其他原本正常的`handler`请求访问不了了，看看是不是配置类上没有加`@EnableWebMvc`注解
+- 配置完后新的问题：其他原本正常的`handler`请求访问不了了，看看是不是配置类上没有加`@EnableWebMvc`注解
 
 ## 四 `RESTFul`风格设计和实战
 
 ### 4.1 风格概述
-
 #### 简介
 
 > `RESTful`是一种基于 **HTTP** 和标准化的设计原则的软件架构风格，用于设计和实现可靠、可扩展和易于集成的 Web 服务和应用程序！
@@ -1079,22 +1071,23 @@ public class RestControllerTest {
    > [http://localhost:8080/shop/product/cellPhone](http://localhost:8080/shop/product/cellPhone)
    >
    > [http://localhost:8080/shop/product/cellPhone/iPhone](http://localhost:8080/shop/product/cellPhone/iPhone)
+   >
 
 ### 4.2 实战
 
 #### 需求
 
-> * **实体类**：User {id 唯一标识,name 用户名，age 用户年龄}
+> * **实体类**：User {`id` 唯一标识, `name` 用户名, `age` 用户年龄}
 >
 > * 功能
     >
-    >   * 用户数据分页展示功能（条件：page 页数 默认1，size 每页数量 默认 10）
+    >   * 用户数据分页展示功能（条件：`page` 页数 默认1，`size` 每页数量 默认 `10`）
     >
     >   - 保存用户功能
 >   - 根据用户id查询用户详情功能
 >   - 根据用户id更新用户数据功能
 >   - 根据用户id删除用户数据功能
->   - 多条件模糊查询用户功能（条件：keyword 模糊关键字，page 页数 默认1，size 每页数量 默认 10）
+>   - 多条件模糊查询用户功能（条件：`keyword` 模糊关键字，`page` 页数 默认1，`size` 每页数量 默认 10）
 
 #### `RESTFul`风格接口设计
 
@@ -1324,8 +1317,7 @@ public class GlobalExceptionHandler {
 #### 5.2.2 使用
 
 ##### 拦截器方法拦截位置
-
-<img src="/images/springMvc/image-20240321230813377.png" alt="image-20240321230813377"  />
+![image-20240321223645551](/images/springMvc/image-20240321230813377.png)
 
 ##### **创建拦截器类**
 
@@ -1569,3 +1561,5 @@ public class User {
 > 我这`Tomcat9.x`版本的所以导入的是 `javax`包下`@NotNull`的，如果是`Tomcat 10.x`版本则需要导入的是`jakarta`包下的！
 
 ![image-20240324170510817](/images/springMvc/image-20240324170510817.png)
+
+

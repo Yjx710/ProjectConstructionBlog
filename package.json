@@ -1,5 +1,5 @@
 {
-  "name": "smallteddy-blog",
+  "name": "yjx-blog",
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",

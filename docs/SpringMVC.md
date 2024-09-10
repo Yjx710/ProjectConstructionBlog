@@ -446,6 +446,43 @@ public String addUser(@RequestBody User user) {
   ![image-20240318223439265](/images/springMvc/image-20240318223439265.png)
 
 
+#### 2.2.5 接收文件
+
+##### `@RequestPart`
+
+```java
+@ApiOperation("上传文件接口")
+@PostMapping(value = "/upload/coursefile", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+public UploadFileResultDto upload(@RequestPart("filedata") MultipartFile upload) {
+    return null;
+}
+```
+
+> 1. `@RequestPart`这个注解用在`multipart/form-data`表单提交请求的方法上。
+> 2. 支持的请求方法的方式`MultipartFile`，属于Spring的`MultipartResolver`类。这个请求是通过`http`协议传输的
+
+##### `@RequestParam`
+
+```java
+@ApiOperation("上传文件接口")
+@PostMapping(value = "/upload/coursefile", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+public UploadFileResultDto upload(@RequestParam("filedata") MultipartFile upload) {
+    return null;
+}
+```
+
+> 1. 用来处理`Content-Type:` 为 `application/x-www-form-urlencoded`编码的内容。（Http协议中，如果不指定`Content-Type`，则默认传递的参数就是`application/x-www-form-urlencoded`类型）
+> 2. `RequestParam`可以接受简单类型的属性，也可以接受对象类型。 实质是将`Request.getParameter()` 中的`Key-Value`参数Map利用Spring的转化机制`ConversionService`配置，转化成参数接收对象或字段。
+> 3. 在`Content-Type: application/x-www-form-urlencoded`的请求中， `GET`方式中`queryString`的值，和`POST`方式中 body data的值都会被Servlet接受到并转化到`Request.getParameter()`参数集中，所以`@RequestParam`可以获取的到。
+
+
+
+##### 区别
+
+> 1. `@RequestPart`这个注解用在`multipart/form-data`表单提交请求的方法上。 支持的请求方法的方式`MultipartFile`，属于[Spring](https://spring.io/)的`MultipartResolver`类。这个请求是通过http协议传输的。
+> 2. `@RequestParam`也同样支持`multipart/form-data`请求。（即两者都能用于后端接收文件） 他们最大的不同是，当请求方法的请求参数类型不再是String类型的时候。
+> 3. `@RequestParam`适用于`name-valueString`类型的请求域，`@RequestPart`适用于复杂的请求域（像JSON，XML）。
+
 
 ### 2.3 接收Cookie数据
 
